@@ -1,0 +1,17 @@
+{
+  "name": "Synthetic Riverside demo",
+  "network": "synthetic-riverside-grid",
+  "real_city": false,
+  "prompt": "Make road R3 one-way eastbound, increase the speed limit on R4 to 40 km/h, and add a signal at intersection J2.",
+  "parser": "rules",
+  "expected_operation_types": [
+    "MODIFY_ROAD_DIRECTION",
+    "MODIFY_SPEED_LIMIT",
+    "ADD_TRAFFIC_SIGNAL"
+  ],
+  "notes": [
+    "The signal operation is valid with a simplified-model warning and stays pending under the auto_valid policy.",
+    "Demand for the sample network is synthetic.",
+    "This file is a scenario definition, not a simulation result."
+  ]
+}

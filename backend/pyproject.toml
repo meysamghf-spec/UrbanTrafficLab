@@ -1,0 +1,49 @@
+[project]
+name = "urbantrafficlab"
+version = "0.1.0"
+description = "AI-assisted urban road-network editing, traffic simulation, and scenario comparison."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi>=0.115.0,<0.116",
+  "uvicorn[standard]>=0.32.0,<0.33",
+  "pydantic>=2.9.0,<3",
+  "pydantic-settings>=2.6.0,<3",
+  "sqlalchemy>=2.0.36,<2.1",
+  "alembic>=1.14.0,<1.15",
+  "httpx>=0.27.0,<0.28",
+  "networkx>=3.4.0,<3.5",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3.0,<8.4",
+  "ruff>=0.7.0,<0.8",
+  "httpx>=0.27.0,<0.28",
+]
+postgres = [
+  "psycopg[binary]>=3.2.0,<3.3",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+markers = [
+  "integration: requires an external program such as Eclipse SUMO",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["app", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+ignore = ["E501"]
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["app*"]
